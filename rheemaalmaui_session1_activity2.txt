@@ -1,0 +1,23 @@
+What does the model achieve? 
+*Predict the value of a dependent variable based on an independent variable based on a linear correlation.
+
+How should metrics be interpreted? 
+*p-value: The probability to observe the test statistic values as extreme or more extreme if null hypothesis is true. If p-value is smaller that the significance level, then the test statistic falls into the rejection region and null hypothesis will be rejected.
+*R-squared: Shows how well the data fit the regression model based on the proportion of variance in the dependent variable that can be explained by the independent variable.
+*Slope: Linear relationship between the two variables based on the model.
+
+What are appropriate use cases?
+*If it expected that the two variables have a linear relationship, a linear regression model should be used.
+
+How is it implemented?
+*Plot a graph between the variables and find the best fit from the given data points. The linear equation calculated from the best fit provides insight into the overall relationship and values can be interpolated. If the relationship is nonlinear, a different model should be used.
+
+It is okay to recognize limits of your expertise
+It is NOT okay to misuse/misinterpret/misreport!
+
+What are caveats/biases/concerns to its usage?
+*Insufficient data points that skew the calculated linear relationship
+*Using the linear regression model on a set of data points that is not linear, further using it incorrectly by trying to find information
+
+How to interpret this specific result and advising action/next steps
+*There is a correlation between car weight and MPG. Based on the linear regression modeling, decreasing car weight can improve MPG.
