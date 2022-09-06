@@ -1,0 +1,3 @@
+Major: MS in Chemical Engineering
+Research interest: Long read genomic sequencing
+Why I am taking CHE 293 Applied Bioinformatics: I currently work in an industry that utilizes bioinformatics and I sometimes have to apply those types of metrics to my work. A foundation in bioinformatics is especially important to have in this day-and-age. This class is to mold my understanding, satisfy my curiousity, and to fulfill my MS requirements. 
