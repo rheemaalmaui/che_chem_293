@@ -1,219 +1,120 @@
 # Note on Submission<!-- omit from toc --> 
 
-- This week, due to technical difficulties, I'll ask everyone to submit via Canvas rather than using Github/Gitpod.  You will still need to run certain steps in the gitpod environment.
+- You should submit to Canvas this week for this activity set.
 
 ---
 
-- [Note on Submission](#note-on-submission)
-  - [Activity 2.1: Sequencing Write-up](#activity-21-sequencing-write-up)
-    - [Background](#background)
-    - [Description](#description)
-  - [Activity 2.2: Needleman Wunsch Alignment](#activity-22-needleman-wunsch-alignment)
-    - [Background](#background-1)
-    - [Description](#description-1)
-  - [Activity 2.3: UPGMA Clustering](#activity-23-upgma-clustering)
-    - [Background](#background-2)
-    - [Description](#description-2)
-  - [Activity 2.4: Using Software For Alignment](#activity-24-using-software-for-alignment)
-    - [Background](#background-3)
-    - [Description](#description-3)
-    - [Running via the web server](#running-via-the-web-server)
-    - [Running via software installed through Anaconda](#running-via-software-installed-through-anaconda)
+- [Activity 3.1: Blast](#activity-31-blast)
+  - [Background](#background)
+  - [Description](#description)
+  - [Steps](#steps)
+- [Activity 3.2: RCSB Entry Exploration](#activity-32-rcsb-entry-exploration)
+  - [Background](#background-1)
+  - [Description](#description-1)
+  - [Steps](#steps-1)
+- [Activity 3.3: RNA Model System on MFOld](#activity-33-rna-model-system-on-mfold)
+  - [Background](#background-2)
+  - [Description](#description-2)
 
-## Activity 2.1: Sequencing Write-up
+## Activity 3.1: Blast
 
 ### Background
 
-Dry-lab focused bioinformaticians may not regularly interact or operate sequencing instruments, an understanding (and ability to independently develop an understanding) of the instruments that generate the raw data they work with is a key skill. In this activity, you will research two sequencing instruments and write a short report comparing and contrasting the two instruments.  
+Basic Local Alignment Search Tool (Blast) is used to search for similar biological sequences (protein and nucleotide).  The impact of this tool on science cannot be understated.  NCBI hosts a web server for Blast making the tool accessible to the wider research community.
 
 ### Description
 
-You will research two sequencing instruments and write a short report that must include the following information:
+In this exercise, you will find an interesting protein using the NCBI protein database.  You will then blastp the sequence of the protein against two databases Finally, you will write a mini-report for this exercise.
 
-**50% of Credit**
+### Steps
 
-1. Name of the instruments
-2. Method of sequencing (e.g. sequencing by synthesis? sanger sequencing? etc..)
-3. Throughput (i.e. rate of raw data generation)
-4. Cost (note: some costs are listed as "starting at $...", this is okay for this report)
-5. Reference linking to the product page
-
-Additionally, this report should also address the following critical thinking questions:
-
-**50% of Credit**
-
-1. Why is throughput reported in terms of data rather than number of reads?
-2. Why do a range of instruments exist in the market rather then a single kind of instrument?
+1. Navigate to the NCBI protein database
+   1. https://www.ncbi.nlm.nih.gov/protein
+2. Query a protein of interest by topic name or gene name. E.g. "CRISPR or Foxp2"
+3. Download or copy the Fasta record (this contains the sequence data as well as a header description of the record)
+4. Blastp the sequence against the nr database
+   1. Note: if you get less than 3 results for this database, choose another sequence and rerun
+5. Blastp the sequence against the pdb database
+   1. NOTE: it is **okay** if you get zero results for this database.
+6. Examine results and write a mini-report with the following sections and answered questions:
+   1. Method
+      1. What was the query sequence? (A link to the NCBI entry or accession ID are both reasonable options)
+      2. When did you run blastp?
+         1. Why is this information important to track for blast in the context of the query database?
+      3. What parameters did you use? (Use the "search summary" tab on the results page)
+   2. Discussion
+      1. How should the statistics be interpreted?
+         1. Score
+         2. E-value
+         3. Identity, Positives, Gaps
+      2. How does the nr vs pdb database query compare? How do they contrast?
+   3. Conclusion
+      1. Based on the graphic summary, what regions of the protein are possibly important to protein function? What regions are possibly not required for protein function?
+7. Upload the mini-report to Canvas
 
 
 ---
 
-## Activity 2.2: Needleman Wunsch Alignment
+## Activity 3.2: RCSB Entry Exploration
 
 ### Background
 
-After learning about the Needleman Wunsch Alignment Algorithm, you should be able to manually follow the algorithm to find the a pairwise sequence alignment.  In real practice, any algorithm in production usage will be written as software, but for understanding the underlying algorithm, a manual walk-through is often a useful exercise.
+The RCSB database includes protein structures derived from both experiment and now computationally modelled ones.  This database includes both the files as well as numerous annotations and cross referencing tools.
+
+ChimeraX is a molecular structure tool useful for visualization and other molecular analyses.  It includes plugins that connect it to other uses of molecular structures including modelling, alignment (sequence and structure), and docking.
 
 ### Description
 
+In this exercise, you will explore the RCSB to find an experimentally determined protein structure of interest.  You will describe the protein and use the RCSB structure similarity search tool to find a structurally similar protein and perform a pairwise sequence alignment.  Finally, you will install and generate a visualization of the structure using ChimeraX.
 
-1. Generate a pair of sequences as follows:
-   > `python scripts/generate_sequences.py <YOUR NAME>`
-   
-   *Note: these scripts should be run in the 'Terminal' of your gitpod vscode session.*
 
-   - Include the printout from the program
+### Steps
 
-   ``` bash
-   # example script run
-   python scripts/generate_sequences.py Jonathan Oribello
-
-   # example output
-   Random Seed String: Jonathan_Oribello
-   Sequence 1: TGGA
-   Sequence 2: AGA
-   ```
-
-1. Using the same scoring rules as the slides, compute the optimal alignment and alignment score.
+1. Navigate to the [RCSB](https://www.rcsb.org/)
+2. Query a protein of interest (I recommend something somewhat common like "Haemoglobin" to make the downstream steps a bit easier)
+3. Select an RCSB entry that is experimentally determined.
+4. Record the experimental information  (Use the Experimental Data Snapshot portion of the main page):
+   1. How should the values be interpreted?
+   2. This glossary may be useful: https://www.rcsb.org/docs/general-help/glossary
+5. In the macromolecules box, find "Find similar proteins by" "3D Structure"
+6. Select a structurally similar protein entry from another organism.
+7. Perform a pairwise alignment using a tool on EMBL-EBI: https://www.ebi.ac.uk/services/data-resources-and-tools
+   1. Record the following:
+      1. Method Section for pairwise alignment
+         1. At this juncture, you should have a good idea what aspects should be recorded for reproducibility sake. (But you can always ask your instructor/peers if unsure.)
+      2. Pairwise alignment result
+8. Install ChimeraX
+   1. https://www.cgl.ucsf.edu/chimerax/
+9. Start the program and follow the quick start tutorial
+   1.  Help -> Quick Start Guide (This will open a new window)
+   2.  Complete the section "Example Atomic-Structure Commands" as a tutorial
+10. Open the two structures you found previously and run the a structural superimposition as follows:
+    1.  Tools -> Structure Analysis -> Matchmaker
+11. Move the view using your mouse to showcase the overlapping region
+12. Convert to a publication style preset as follows:
+    1.  Presets -> Publication
+13. Save as a png as follows:
+    1.  File -> Save... (Select png format and name appropriately)
+14. Write a figure caption (make sure to name the proteins, what the image depicts)
+15. Upload the writeup, figure and figure caption to Canvas
 
 ---
 
-## Activity 2.3: UPGMA Clustering
+## Activity 3.3: RNA Model System on MFOld
 
 ### Background
 
-Similar to Needleman Wunsch, we will manually practice the algorithm to solidify understanding.
+Energetics drive the folding of molecules. In this activity you will explore the relationship between energetics and structure using a simple model system,a short RNA sequence.
 
 ### Description
 
-1. Generate a pair of matrix of similarities as follows:
-   > `python scripts/generate_matrix.py <YOUR NAME>`
-   
-   *Note: these scripts should be run in the 'Terminal' of your gitpod vscode session.*
-
-   - Include the printout from the program
-
-   ``` bash
-   # example script run
-   python scripts/generate_maxtrix.py Jonathan Oribello
-
-   # example output
-   =================================
-   Random Seed String: Jonathan_Oribello
-   Distances
-   ----------------
-   A to B: 12
-   A to C: 3
-   A to D: 48
-   B to C: 14
-   B to D: 30
-   C to D: 57
-   =================================
-   ```
-
-1. Construct the full tree and submit the image to the Canvas dropbox for this activity.
-
----
-
-## Activity 2.4: Using Software For Alignment
-
-### Background
-
-In practice, basically all actual algorithms are run via software.  Finding, setting up, and using such software is a skill a working bioinformatician will need to use on a regular basis (if not every day).
-
-In this activity, you will perform Multiple Sequence Alignment using [Clustal Omega](http://www.clustal.org/omega/) to learn about best practies in using software created by others.
-
-### Description
-
-You will run Clustal Omega in two different ways:
-
-1. Clustal Omega via the web server
-2. Clustal Omega via software installed through Anaconda and run locally (in the gitpod)
-
----
-
-### Running via the web server
-
-**50% of credit**
-
-The Clustal Omega software is hosted as a web server by the European Molecular Biology Laboratory's European Bioinformatics Institute (EMBL-EBI).  A web server most often involves a website with a graphical user interface (GUI) that allows users to do the following:
-
-1. Submit input data
-1. Customize parameters for the software
-1. Run the software (on their servers, not yours)
-1. Get the output and explore via a GUI
-
-For this activity, you will peform the following:
-
-**Note**: References to 'Steps' refer to the 'Steps' on the web page in this set of instructions
-
-1. Navigate to the web server page at [https://www.ebi.ac.uk/Tools/msa/clustalo/](https://www.ebi.ac.uk/Tools/msa/clustalo/)
-1. Copy the contents of the the file 'data/msa_input.fa' into the Step 1 box.
-1. **Don't** change parameters for this activity in Step 2
-1. Submit the job in Step 3
-1. You will be taken to an interim waiting page, wait a few seconds it should finish quickly and take you to the results page
-1. Once on the results page, answer the following questions (You will need to navigate the tabs on the results page):
-   - What was the version of clustalo used by the web server?
-   - When did you run this job?
-   - What input parameters were used?
-   - Based on the Guide Tree, what protein is least similar to the other three?
-   - How can you download the alignment output from this job?
-
-### Running via software installed through Anaconda
-
-**50% credit**
-
-Now that we have run Clustal Omega via the web server, we will run the software directly on our compute resources.  
-
-First, we need to install the software onto the gitpod workspace.
-
-Traditionally, software installation was a technically intensive task that required manually installing software piece by piece with varying installation tools and requirements.  
-
-To make matters worse, all software is built upon other software, we call these *dependencies* and installing a relatively simple tool could often require installing a wide number of dependencies as well (in fact it could be so bad the term [Dependency Hell](https://en.wikipedia.org/wiki/Dependency_hell) was coined to describe how frusterating the process could be for complex cases ).
-
-Thankfully, in recent years, a number of solutions to software installation have been developed. These solutions free up bioinformaticians to focus on using the software over setting it up.
-
-One such solution is [Anaconda](https://www.anaconda.com), which allows users to simply install software and all required dependencies with a single command.
-
-In this activity, we will install the software using Anaconda (which was preinstalled in your workspace)
-
-1. Find Clustal Omega on Anaconda
-   > Googling 'clustal omega anaconda' should yield this as a first link: https://anaconda.org/bioconda/clustalo
-1. You should see a page like the following, below the image are some points to focus on:
-![Anaconda Image](images/anaconda.PNG)
-   1. 'bioconda' is the Anaconda channel that offers the Clustal Omega (here named by alternative name 'clustalo')
-      - Anaconda will actually allow anyone to create a channel and add software to that channel.  Anytime we are considering using software others have written, we should assess if the source is reliable.  In general practice, the `Anaconda`,`r`, and`conda-forge` and `bioconda` channels make up the majority of channels you will use and are curated by either the Anaconda company or a well trusted community group. For most well-used bioinformatics software, the `bioconda` channel includes up-to-date software.
-   2. The link to the software home page and other useful software details are noted here. The software home page is often where the requested citation for the tool is located. Citing the Anaconda url is **not** sufficient in citing the tool.
-   3. This section shows the operating systems the tool is compatible with and the latest versions for each operating system.  In this case, we see only Mac and Linux are supported for this tool (don't worry the gitpod workspace is a Linux system).
-   4. These commands can be copied and pasted into the terminal to install the tool.
-1. Copy and run the **first** command given by the webpage and run in your terminal.  A printout of what will be installed and a prompt to continue are presented.
-1. Once installed, you now have Clustal Omega (named clustalo in the sytem) available for usage.  You can now run clustalo as follows:
-   ``` bash
-   clustalo -i data/msa_input.fa -o msa_output_with_anaconda.fa
-   ```
-1. This will produce a new file `msa_output_with_anaconda.fa`. Open it an compare to the results from the Clustal Omega web server.
-1. Notice the version is **not** included in the output file, it is best practice to record the version as reported by the tool itself.  For clustalo (and many other tools), this can be printed out by running the following command:
-   ``` bash
-   clustalo --version
-   ```
-
-1. Answer the following questions about this approach:
-   - What was the version of clustalo installed through Anaconda?
-   - What dependency did Anaconda also install when asked to install clustalo?
-   - Referring to the command used, what does the '-i' mean? What about the '-o'?
-   - Search for another bioinformatics tools, (try searching for on of the topics we have covered). Is the tool available on Anaconda? If so provide the url and the operating systems the tool can be installed on (Note: 'noarch' means any operating system!).
-
-1. Answer the following questions comparing both approaches
-   - What are pros and cons of both approaches in terms of the following:
-      - Output data and results: 
-        - Are the alignment results the same? 
-        - Which was easier to interpret? 
-        - Which had additional output/value beyond the alignment output itself?
-      - Throughput considerations: 
-        - Which tool would you likely use if you needed to perform 2000 MSA's (note: not 2000 sequences in one MSA but 2000 MSA's!)
-      - Reproducibility:
-        - Which approach could be used to run an older version of Clustal Omega? (an example use case would be to reproduce results of an article from the past)
-
-
-
-
+1. For the activity use the sequence from the slides.
+2. Navigate to http://www.unafold.org/mfold/applications/rna-folding-form.php
+3. Confirm you can reproduce the results from the slides.
+4. Next perform the following two things:
+   1. Use your own constraints
+      2. Include the results, the constraint parameter (i.e. "F 20 0 1")
+      3. Describe what the constraint does? (i.e. ensures the 1 and 20th bases are paired together)
+   2. Replace one letter of the query sequence to generate a structure with better energetics than the original sequence.
+      1. Describe the results and why the change makes the structure more stable.
+5. Upload the writeup to Canvas
