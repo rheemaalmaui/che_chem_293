@@ -1,0 +1,63 @@
+HETATM    1  N3  PFO A   1     -22.476  -6.381  37.409  1.00  0.00           N
+HETATM    2  C4  PFO A   1     -19.204   2.659  40.822  1.00  0.00           C
+HETATM    3  N2  PFO A   1     -19.527  -1.256  38.954  1.00  0.00           N
+HETATM    4  C7  PFO A   1     -20.545  -0.680  39.700  1.00  0.00           C
+HETATM    5  C6  PFO A   1     -20.248   0.495  40.546  1.00  0.00           C
+HETATM    6  C9  PFO A   1     -20.063  -2.315  38.413  1.00  0.00           C
+HETATM    7  C13 PFO A   1     -22.831  -6.020  38.791  1.00  0.00           C
+HETATM    8  C20 PFO A   1     -23.467   0.298  40.108  1.00  0.00           C
+HETATM    9  C21 PFO A   1     -24.757   0.528  40.543  1.00  0.00           C
+HETATM   10  C8  PFO A   1     -21.715  -1.407  39.550  1.00  0.00           C
+HETATM   11  N5  PFO A   1     -25.610  -0.457  40.869  1.00  0.00           N
+HETATM   12  C18 PFO A   1     -21.136  -9.181  34.433  1.00  0.00           C
+HETATM   13  C16 PFO A   1     -22.571  -8.210  35.764  1.00  0.00           C
+HETATM   14  C19 PFO A   1     -23.059  -1.030  40.041  1.00  0.00           C
+HETATM   15  C1  PFO A   1     -20.718   0.573  41.861  1.00  0.00           C
+HETATM   16  C2  PFO A   1     -20.459   1.688  42.640  1.00  0.00           C
+HETATM   17  C3  PFO A   1     -19.720   2.708  42.092  1.00  0.00           C
+HETATM   18  C5  PFO A   1     -19.484   1.548  40.042  1.00  0.00           C
+HETATM   19  N1  PFO A   1     -21.383  -2.476  38.737  1.00  0.00           N
+HETATM   20  C10 PFO A   1     -22.230  -3.625  38.337  1.00  0.00           C
+HETATM   21  C11 PFO A   1     -21.998  -4.006  36.875  1.00  0.00           C
+HETATM   22  C12 PFO A   1     -22.804  -5.256  36.512  1.00  0.00           C
+HETATM   23  C14 PFO A   1     -22.020  -4.817  39.274  1.00  0.00           C
+HETATM   24  C15 PFO A   1     -23.170  -7.602  37.000  1.00  0.00           C
+HETATM   25  C17 PFO A   1     -21.352  -8.969  35.732  1.00  0.00           C
+HETATM   26  O1  PFO A   1     -22.112  -8.629  33.696  1.00  0.00           O
+HETATM   27  N4  PFO A   1     -23.043  -8.024  34.570  1.00  0.00           N
+HETATM   28  C22 PFO A   1     -25.130  -1.722  40.735  1.00  0.00           C
+HETATM   29  N6  PFO A   1     -23.869  -2.049  40.367  1.00  0.00           N
+HETATM   30  N7  PFO A   1     -26.008  -2.717  40.824  1.00  0.00           N
+HETATM   31  F1  PFO A   1     -19.551   3.843  42.815  1.00  0.00           F
+CONECT    1   22   24    7
+CONECT    2   18   17
+CONECT    3    6    4
+CONECT    4    3   10    5
+CONECT    5    4   18   15
+CONECT    6    3   19
+CONECT    7    1   23
+CONECT    8   14    9
+CONECT    9    8   11
+CONECT   10    4   19   14
+CONECT   11    9   28
+CONECT   12   26   25
+CONECT   13   27   25   24
+CONECT   14    8   10   29
+CONECT   15    5   16
+CONECT   16   15   17
+CONECT   17    2   16   31
+CONECT   18    2    5
+CONECT   19    6   10   20
+CONECT   20   19   21   23
+CONECT   21   20   22
+CONECT   22    1   21
+CONECT   23    7   20
+CONECT   24    1   13
+CONECT   25   12   13
+CONECT   26   12   27
+CONECT   27   13   26
+CONECT   28   11   29   30
+CONECT   29   14   28
+CONECT   30   28
+CONECT   31   17
+END

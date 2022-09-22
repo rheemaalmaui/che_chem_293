@@ -4,17 +4,19 @@
 
 ---
 
-- [Activity 3.1: Blast](#activity-31-blast)
-  - [Background](#background)
+- [Activity 4.1: Exploring ChimeraX](#activity-41-exploring-chimerax)
   - [Description](#description)
   - [Steps](#steps)
-- [Activity 3.2: RCSB Entry Exploration](#activity-32-rcsb-entry-exploration)
-  - [Background](#background-1)
+- [Activity 4.2: Homology Modelling with Swiss Model](#activity-42-homology-modelling-with-swiss-model)
+  - [Background](#background)
   - [Description](#description-1)
   - [Steps](#steps-1)
-- [Activity 3.3: RNA Model System on MFOld](#activity-33-rna-model-system-on-mfold)
-  - [Background](#background-2)
+- [Activity 4.3: Docking using Webina (A port of AutoDock Vina)](#activity-43-docking-using-webina-a-port-of-autodock-vina)
+  - [Background](#background-1)
   - [Description](#description-2)
+- [Activity 4.4: Interpreting Molecular Dynamics Plots](#activity-44-interpreting-molecular-dynamics-plots)
+  - [Background](#background-2)
+  - [Description](#description-3)
 
 ## Activity 4.1: Exploring ChimeraX
 
@@ -81,16 +83,52 @@ In this exercise, you will use the Swiss Model server to predict the structure o
 
 ---
 
-## Activity 4.3: Docking using Swiss Dock
+## Activity 4.3: Docking using Webina (A port of AutoDock Vina)
 
 ### Background
 
-Energetics drive the folding of molecules. In this activity you will explore the relationship between energetics and structure using a simple model system,a short RNA sequence.
+Molecular Docking can be used to predict energetically plausible interactions between proteins and ligands.  Inputs are the two molecules of interest and often times a designation about the region of the protein to search interactions against.  In the exercise, you will use a web server called [Webina](https://academic.oup.com/bioinformatics/article/36/16/4513/5860016).
+
+A technical note: In contrast to most web servers where the task is computed on the server computers, this web server takes advantage of an emerging technology called ["Web Assembly"](https://webassembly.org/) to compute the task on your machine through a web browser interface.  An advantage of this approach is the software setup is still done for the user but the actual compute resources are not subject to being removed by the maintainer.  Google Earth and other "applications" on the web use a similar approach and I suspect this method of delivering software is going to grow in scientific usage.
+
+This activity will use [4TN6](https://www.rcsb.org/structure/4TN6) as a test case. This is a CK1d protein in complex with an inhibitor, PFO.  You will use Webina (the server) to perform docking with AutoDock Vina (the underlying docking software).  After getting results, you will how assess the docking complex in comparison to the experimental ligand location.
 
 ### Description
 
-TODO: once test files generated from Swiss Dock
-   
+The input files have been prepared for you (using ChimeraX) and are as follows:
+1. Receptor: [4tn6A_no_ligand.pdb](webina_input_files/4tn6A_no_ligand.pdb) , A pdb file of 4tn6 reduced to the A chain and with the ligand removed
+2. Ligand: [PFO.pdb](webina_input_files/PFO.pdb) , A pdb file of the ligand PFO alone, not from 4tn6 (we do not want to bias dockig by giving the correct ligand conformation)
+3. Correct Pose: [PFO_experimental.pdb](webina_input_files/PFO_experimental.pdb) , A pdb file of the ligand PFO alone from 4tn6, this will not affect the docking but Webina can display it for comparison of docking to experimental location.
+
+1. Navigate to [Webina](https://durrantlab.pitt.edu/webina/)
+2. Input the files as indicated above. You will get a pop-up about Converting the file to PDBQT format, keep all defaults and select Convert
+   1. Additional pop-ups about "File Too Big" can be ignored in this example
+3. Next observed the "Docking Box" section, this allows the user to select the region on the receptor the ligand will check.
+   1. Selection of the docking box is something informed by the goal and external information e.g. for screening you likely know an existing ligand binding pocket to enclose in the Docking Box, tools like [prankweb](https://prankweb.cz/)
+   2. In this activity, I will provide the docking box parameters as follows:
+      1. Box Center
+         1. x: -20
+         2. y: -3
+         3. z: 42
+      2. Box Size
+         1. x: 20
+         2. y: 20
+         3. z: 20
+4. In the "Other Critical Parameters" section
+   1. Set CPUs to 2 (if you have issues with CPUs=2, set it to 1)
+   2. Set Exhaustiveness to 8 (this is an AutoDock Vina Parameters that effectively sets the granularity of the search, high values tend to be accurate but take more time to run)
+5. Start the docking, it will likely take a few minutes to finish (Note: I recommend keeping the tab in the foreground, some browsers will put background tabs to sleep which will break the computation!)
+6. On the Output page, "Visualization" section rotate the image to display the docking complex
+   1. The Yellow ligand is the experimental "correct" pose, the grey one is the docked ligand
+   2. Click through the mode rows and observe the docked ligand change position, this is because each mode represents a plausible solution.
+   3. Take a screenshot of the mode you think is most consistent with the experimental ligand to include in your upload. (example) ![Webina_output](images/Webina_Output.PNG)
+7. Answer the following questions:
+   1. Which binding mode is most energetically favorable according to the docking and what is the energy?
+   2. What does "Dist From Rmsd L.B." and "Dist From Rmsd U.B." mean This is output from AutoDock Vina so the [manual](https://vina.scripps.edu/manual/) is handy.
+   3. Which binding mode looks the most similar to the experimental solution? (the one you took a screenshot of)
+   4. If the binding mode that looks most similar is not the most energetically favorable, what does imply about an approach where you only analyze the best energy result?
+8. Upload the answers to the questions and screenshot for this activity.
+
 ---
 
 ## Activity 4.4: Interpreting Molecular Dynamics Plots
