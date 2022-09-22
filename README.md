@@ -16,91 +16,72 @@
   - [Background](#background-2)
   - [Description](#description-2)
 
-## Activity 3.1: Blast
-
-### Background
-
-Basic Local Alignment Search Tool (Blast) is used to search for similar biological sequences (protein and nucleotide).  The impact of this tool on science cannot be understated.  NCBI hosts a web server for Blast making the tool accessible to the wider research community.
+## Activity 4.1: Exploring ChimeraX
 
 ### Description
 
-In this exercise, you will find an interesting protein using the NCBI protein database.  You will then blastp the sequence of the protein against two databases Finally, you will write a mini-report for this exercise.
+In this exercise, you will explore some proteins from RCSB using chimeraX.
 
 ### Steps
 
-1. Navigate to the NCBI protein database
-   1. https://www.ncbi.nlm.nih.gov/protein
-2. Query a protein of interest by topic name or gene name. E.g. "CRISPR or Foxp2"
-3. Download or copy the Fasta record (this contains the sequence data as well as a header description of the record)
-4. Blastp the sequence against the nr database
-   1. Note: if you get less than 3 results for this database, choose another sequence and rerun
-5. Blastp the sequence against the pdb database
-   1. NOTE: it is **okay** if you get zero results for this database.
-6. Examine results and write a mini-report with the following sections and answered questions:
-   1. Method
-      1. What was the query sequence? (A link to the NCBI entry or accession ID are both reasonable options)
-      2. When did you run blastp?
-         1. Why is this information important to track for blast in the context of the query database?
-      3. What parameters did you use? (Use the "search summary" tab on the results page)
-   2. Discussion
-      1. How should the statistics be interpreted?
-         1. Score
-         2. E-value
-         3. Identity, Positives, Gaps
-      2. How does the nr vs pdb database query compare? How do they contrast?
-   3. Conclusion
-      1. Based on the graphic summary, what regions of the protein are possibly important to protein function? What regions are possibly not required for protein function?
-7. Upload the mini-report to Canvas
-
+1. Open ChimeraX and run the following commands in the 'Command' box at the bottom of the screen (you will explain what each command does as part of this report):
+   1. `open 4jjx`
+   2. `color bychain`
+   3. `select #1/A` # Look for the green outline around parts of the protein after you run this command
+   4. `rainbow sel`
+   5. `select ~sel`
+   6. `delete sel`
+   7. `surface`
+   8. `color byhetero` # Hover your mouse over the newly colored atoms, What do the colors denote? Red,Blue, Yellow? 
+   9. `~surface` # What does the '~' tilde character mean? This is the second time we have used it
+   10. `distance #1/A:0@CA #1/A:171@CA` # What value does this compute? (Clue it is a parameter from our structures lecture this week)
+   11. `hbonds reveal true` # What does this show? What can you conclude about the relationship between hydrogen bonds and the secondary structures (helices and sheets)?
+2. Rotate your protein to showcase the distance and save this as a png file.
+3. Write a report to explain what each of these commands AND answer the questions for each command.
+4. Upload the mini-report (including the explanation of commands, image and image caption) to Canvas
 
 ---
 
-## Activity 3.2: RCSB Entry Exploration
+## Activity 4.2: Homology Modelling with Swiss Model
 
 ### Background
 
-The RCSB database includes protein structures derived from both experiment and now computationally modelled ones.  This database includes both the files as well as numerous annotations and cross referencing tools.
-
-ChimeraX is a molecular structure tool useful for visualization and other molecular analyses.  It includes plugins that connect it to other uses of molecular structures including modelling, alignment (sequence and structure), and docking.
+Homology modelling attempts to predict the structure of a query primary sequence by comparison to a database of known structures. 
 
 ### Description
 
-In this exercise, you will explore the RCSB to find an experimentally determined protein structure of interest.  You will describe the protein and use the RCSB structure similarity search tool to find a structurally similar protein and perform a pairwise sequence alignment.  Finally, you will install and generate a visualization of the structure using ChimeraX.
-
+In this exercise, you will use the Swiss Model server to predict the structure of a protein already in the RCSB.  Effectively this is a positive control on the approach since we know an existing experimental structure exists for comparison.
 
 ### Steps
 
 1. Navigate to the [RCSB](https://www.rcsb.org/)
-2. Query a protein of interest (I recommend something somewhat common like "Haemoglobin" to make the downstream steps a bit easier)
-3. Select an RCSB entry that is experimentally determined.
-4. Record the experimental information  (Use the Experimental Data Snapshot portion of the main page):
-   1. How should the values be interpreted?
-   2. This glossary may be useful: https://www.rcsb.org/docs/general-help/glossary
-5. In the macromolecules box, find "Find similar proteins by" "3D Structure"
-6. Select a structurally similar protein entry from another organism.
-7. Perform a pairwise alignment using a tool on EMBL-EBI: https://www.ebi.ac.uk/services/data-resources-and-tools
-   1. Record the following:
-      1. Method Section for pairwise alignment
-         1. At this juncture, you should have a good idea what aspects should be recorded for reproducibility sake. (But you can always ask your instructor/peers if unsure.)
-      2. Pairwise alignment result
-8. Install ChimeraX
-   1. https://www.cgl.ucsf.edu/chimerax/
-9. Start the program and follow the quick start tutorial
-   1.  Help -> Quick Start Guide (This will open a new window)
-   2.  Complete the section "Example Atomic-Structure Commands" as a tutorial
-10. Open the two structures you found previously and run the a structural superimposition as follows:
-    1.  Tools -> Structure Analysis -> Matchmaker
-11. Move the view using your mouse to showcase the overlapping region
-12. Convert to a publication style preset as follows:
-    1.  Presets -> Publication
-13. Save as a png as follows:
-    1.  File -> Save... (Select png format and name appropriately)
-14. Write a figure caption (make sure to name the proteins, what the image depicts)
-15. Upload the writeup, figure and figure caption to Canvas
+2. Obtain the fasta sequence for the entry with RCSB accession ID: '4hjy' (this can be obtained from the 'Download Files' dropdown menu on the right hand side of the 4HJY entry page)
+3. Navigate to the [Swiss Model website](https://swissmodel.expasy.org/interactive)
+4. Paste in the contents or upload the fasta file as the input
+5. Add an email and project name, while both are optional, it is often advised to include them, especially when a server job may take a while to complete
+6. Start the modelling by clicking 'Build Model'
+7. This server takes around ~15 minutes to complete
+8. Once finished, you should have two models built.
+9. Using the documentation: https://swissmodel.expasy.org/docs/help
+10. Report the following for each model
+    1.  The template used
+    2.  The sequence identity
+    3.  Coverage (the range modelled of the full query sequence)
+    4.  GMQE
+    5.  QMEANDisCo Global
+    6.  Your conclusion on whether the model is reliable and why?
+11. For the best model, we will now check against the actual '4hjy' structure.
+    1.  Download the pdb file for the model![](images/SwissModel.PNG)
+    2.  Load the pdb file into ChimeraX along with 4hjy
+    3.  Perform a matchmaker between the model and the experimental structure
+        1.  Note: the model is only one chain of the two chain protein so you should see the model superimpose onto one of the two chains
+    4.  Export an image and answer the following question
+        1.  Does the model appear to be largely consistent with the experimental structure why or why not?
+12. Upload the writeup, figure and figure caption to Canvas
 
 ---
 
-## Activity 3.3: RNA Model System on MFOld
+## Activity 4.3: Docking using Swiss Dock
 
 ### Background
 
@@ -108,13 +89,30 @@ Energetics drive the folding of molecules. In this activity you will explore the
 
 ### Description
 
-1. For the activity use the sequence from the slides.
-2. Navigate to http://www.unafold.org/mfold/applications/rna-folding-form.php
-3. Confirm you can reproduce the results from the slides.
-4. Next perform the following two things:
-   1. Use your own constraints
-      2. Include the results, the constraint parameter (i.e. "F 20 0 1")
-      3. Describe what the constraint does? (i.e. ensures the 1 and 20th bases are paired together)
-   2. Replace one letter of the query sequence to generate a structure with better energetics than the original sequence.
-      1. Describe the results and why the change makes the structure more stable.
+TODO: once test files generated from Swiss Dock
+   
+---
+
+## Activity 4.4: Interpreting Molecular Dynamics Plots
+
+### Background
+
+Molecular dynamics (MD) output a series of positions and velocities for an input set of atoms over the course a simulation.  Plots serve as a powerful means of conveying the stability of the simulated complex at a whole molecule and specific residue view.
+
+For this activity, you will explore an article presenting MD plots and a manual for an MD library.  The manual includes example figures and you will interpret these plots.
+
+### Description
+
+1. Use Figure 5 from understanding-thermal-and-organic-solvent-stability-of-thermoalkalophilic-lipases-insights-from-computational-predictions-and-experiments.pdf Article (on Canvas)
+   1. In the 450K simulation when did the stability of the Open State form start to degrade in Methanol? Explain how you reached this conclusion
+   2. Imagine you ran 20 ns simulations for this same set of conditions, what is a risk very short simulations?
+   3. At 450K, is the effect of simulation solvent dependent on the protein form (i.e. open or closed), why or why not? Speculate on a reason for this depedency or lack of dependency.
+2. Navigate to https://cran.r-project.org/web/packages/MDplot/vignettes/publication.pdf
+3. Answer the following questions for Figure 11.
+   1. Does this plot convey information about the whole system or specific residues in the system?
+   2. What was the approximate simulation time?
+   3. Comparing WildType(WT) and Mutant, suppose the researcher was designing a mutation that was with the goal of destabilizing the protein.  Based on this plot, was is this mutation likely to destabilize the protein? Why or why not?
+4. Answer the following questions for Figure 13.
+   1. Does this plot convey information about the whole system or specific residues in the system?
+   2. What regions of the molecule are relatively stable? What regions are relatively unstable?
 5. Upload the writeup to Canvas
